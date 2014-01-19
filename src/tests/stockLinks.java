@@ -33,6 +33,7 @@ public class stockLinks extends testBase{
 		try
 		{
 			driver.get(CONFIG.getProperty("homePageURL"));
+			String i="";
 			if(driver.findElements(By.id("p_lt_zoneMembership_mb_lblUserName")).size()==0)
 			{
 				
@@ -99,8 +100,10 @@ public class stockLinks extends testBase{
 				System.out.println("About me Save is NOT working");
 		--*/
 			// Contact Info in Profile
-			Thread.sleep(2000);
-			GetObjById("ContactInfo_Profile").click();
+			i=driver.findElement(By.linkText("Contact Info")).getAttribute("href");
+			driver.get(i);
+			//Thread.sleep(2000);
+			//GetObjById("ContactInfo_Profile").click();
 			Thread.sleep(4000);
 			
 		  	if (GetObjById("FirstName_ContactInfo_Profile").getAttribute("value").equals("Kallol"))
@@ -125,10 +128,12 @@ public class stockLinks extends testBase{
 		  	else
 		  		System.out.println("Email is NOT displayed on contact info page");		
 		  	
-		  	Thread.sleep(2000);
-			GetObjById("Subscription_Profile").click();
+		  	i=driver.findElement(By.linkText("Subscriptions")).getAttribute("href");
+			driver.get(i);
+		  //	Thread.sleep(2000);
+			//GetObjById("Subscription_Profile").click();
 			Thread.sleep(4000);
-			String i=GetObjByXpath("SubscriptionHeader_Profile").getText();	
+			 i=GetObjByXpath("SubscriptionHeader_Profile").getText();	
 			System.out.println(i);
 			if (i.equals("Current Subscription"))
 		  	{
@@ -153,8 +158,10 @@ public class stockLinks extends testBase{
 		try
 		{
 			String i="";
-			Thread.sleep(4000);
-			GetObjById("PaymentInfo_Profile").click();
+			i=driver.findElement(By.linkText("Payment Info")).getAttribute("href");
+			driver.get(i);
+			//Thread.sleep(4000);
+			//GetObjById("PaymentInfo_Profile").click();
 			Thread.sleep(4000);
 			i=GetObjByXpath("Payment_Profile").getText();
 			if (i.equals("Payment Information")) 
@@ -190,8 +197,12 @@ public class stockLinks extends testBase{
 		try
 		{
 			String i="";
+			
 			Thread.sleep(2000);
-			GetObjById("Messages_Profile").click();
+			i=driver.findElement(By.linkText("Messages")).getAttribute("href");
+			driver.get(i);
+			//Thread.sleep(2000);
+			//GetObjById("Messages_Profile").click();
 			Thread.sleep(4000);
 			i=GetObjByXpath("MessagesHeader_Profile").getText();
 			if (i.equals("My messages"))
@@ -219,6 +230,39 @@ public class stockLinks extends testBase{
 				System.out.println("Message send successfully and present in outbox");
 			}
 			
+			
+		}
+		catch(Throwable t)
+		{
+			System.out.println("Error on Profile.class  testMessages()");
+			eCollector.addError(t);
+		}
+		
+	}
+	@Test
+	public void DtestFavourites() throws InterruptedException{
+		try
+		{
+			String i="";
+			Thread.sleep(2000);
+			i=driver.findElement(By.linkText("Favourites")).getAttribute("href");
+			System.out.println("href = "+i);
+			driver.get(i);
+			//GetObjById("Favourites_Profile").click();
+			Thread.sleep(4000);
+			i=GetObjByXpath("FavouritesHeader_Profile").getText();
+			if (i.equals("Favourites"))
+		  	{
+		  		System.out.println("Favourites header is displayed on Favourites page");
+		  	}
+		  	else
+		  		System.out.println("Favourites header is NOT displayed on Favourites page");
+			if (driver.findElements(By.id("p_lt_zoneContent_SubContent_p_lt_zoneCenter_Stockhouse_MyFavouritesOverview_LinkViewEditBullboards")).size()!=0 && driver.findElements(By.id("p_lt_zoneContent_SubContent_p_lt_zoneCenter_Stockhouse_MyFavouritesOverview_RepBullboards_ctl01_HlSymbol")).size()!=0)
+			{
+				System.out.println("Favorite bullboard tables are loaded");
+			}
+			else
+				System.out.println("Favorite bullboard tables NOT are loaded");
 			
 		}
 		catch(Throwable t)
