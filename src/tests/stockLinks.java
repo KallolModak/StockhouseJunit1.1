@@ -153,11 +153,11 @@ public class stockLinks extends testBase{
 		try
 		{
 			String i="";
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			GetObjById("PaymentInfo_Profile").click();
 			Thread.sleep(4000);
 			i=GetObjByXpath("Payment_Profile").getText();
-			if (i.equals("Payment Information"))
+			if (i.equals("Payment Information")) 
 		  	{
 		  		System.out.println("Payment header is displayed on subscription page");
 		  	}
