@@ -17,6 +17,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import com.sun.jna.platform.win32.Wdm.KEY_BASIC_INFORMATION;
 public class testBullboard extends testBase{
 	
 	@Rule
@@ -32,7 +34,9 @@ public class testBullboard extends testBase{
 	{
 		
 		driver.get(CONFIG.getProperty("homePageURL"));
-		//GetObjById("p_lt_zoneMembership_mb_lnkSignIn").click();
+		//GetObjById("signin_link").click();
+		
+		
 		
 		//Login
 		GetObjById("signin_link").click();
@@ -42,7 +46,6 @@ public class testBullboard extends testBase{
 		GetObjById("popup_Login_Button").click();
 		Thread.sleep(6000);
 		driver.get(CONFIG.getProperty("bullboardURL"));
-		
 		//Post on Bullboard
 		GetObjById("bullboard_Link_ComPage").click();
 		GetObjById("new_Post").click();	
@@ -67,9 +70,10 @@ public class testBullboard extends testBase{
 		}
 		else
 			System.out.println("Validation for bullboard comment is not working");
-		Thread.sleep(3000);
+		Thread.sleep(11000);
 		GetObjById("bullboard_Post_Subj").sendKeys("Test CommeTest CommeTest CommeTest CommeTest Comme 60 chars!"+"\t"+"test comments");
-		Thread.sleep(9000);
+		
+		Thread.sleep(3000);
 		GetObjById("bullboard_Post_Btn").click();
 		}
 		

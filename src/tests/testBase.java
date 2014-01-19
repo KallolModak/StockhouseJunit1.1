@@ -37,7 +37,7 @@ public class testBase {
 			OR.load(fn);
 			if(CONFIG.getProperty("browser").equals("Firefox"))
 			{
-			/*----
+			
 			 File pathToBinary = new File("C:\\Program Files (x86)\\Mozilla Firefox\\Firefox.exe");
 				FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
 				FirefoxProfile firefoxProfile = new FirefoxProfile();
@@ -46,8 +46,9 @@ public class testBase {
 				 
 				 
 				 dr.manage().window().setSize(new Dimension(1365, 700));
-				 ----*/
-				 String n="http://VANCOUVER\\usrQA1:BSGnpy961a@test.stockhouse.com/";
+			
+			/*-----
+				String n="http://VANCOUVER\\usrQA1:BSGnpy961a@test.stockhouse.com/";
 				 FirefoxProfile firefoxProfile1 = new ProfilesIni().getProfile("default");
 				 File pluginAutoAuth = new File("C:\\Users\\Kallol\\Downloads\\autoauth-2.1-fx+fn.xpi");
 				 try{
@@ -57,9 +58,11 @@ public class testBase {
 				 {
 					 
 				 }
-				 FirefoxDriver driver1= new FirefoxDriver(firefoxProfile1);
-				 driver1.manage().window().setSize(new Dimension(1365, 700));
-				 driver1.get(n);	 
+				 dr= new FirefoxDriver(firefoxProfile1);
+				 dr.manage().window().setSize(new Dimension(1365, 700));
+				 dr.get(n);	
+				 
+				 -----*/
 			}
 			 driver= new  EventFiringWebDriver(dr);
 			 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
@@ -93,7 +96,7 @@ public static WebElement GetObjById(String OR_Key){
 	 }
 	 catch(Throwable t)
 	 {
-	 	System.out.println(OR_Key);
+	 	System.out.println("This element was NOT found "+OR_Key);
 	 	return null;
 	 }
 }
@@ -103,7 +106,7 @@ public static WebElement GetObjByXpath(String OR_Key){
 	}
 	catch(Throwable t)
 	{
-		System.out.println(OR_Key);
+		System.out.println("This element was NOT found "+OR_Key);
 		return null;
 	}
 }
