@@ -7,6 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
 	testLogin.class,
+	myProfile.class,
 	quickLinks.class,
 	testBullboard.class
 })

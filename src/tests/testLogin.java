@@ -36,9 +36,10 @@ public class testLogin extends testBase {
 	{
 		int flag=0;
 		String textDisplayed=null;
+		driver.get(CONFIG.getProperty("homePageURL"));
 	//	driver.get(CONFIG.getProperty("bullboardURL"));
 		//GetObjById("p_lt_zoneMembership_mb_lnkSignIn").click();
-		driver.get("http://www.stockhouse.com/Companies/Bullboard/testj/test-co");
+		
 		//Login
 		GetObjById("signin_link").click();
 		Thread.sleep(2000);
@@ -71,7 +72,7 @@ public class testLogin extends testBase {
 			GetObjById("popup_Password_Input").sendKeys(password);
 			GetObjById("popup_Login_Button").click();
 			Thread.sleep(3000);
-			driver.get(CONFIG.getProperty("bullboardPostURL"));
+			driver.get("http://www.stockhouse.com/companies/bullboard/t.bb/blackberry");
 			
 			// Check for admin
 			try
@@ -95,9 +96,10 @@ public class testLogin extends testBase {
 			
 			
 			//Logout
-			driver.findElement(By.xpath("//*[@id='form']/div[5]/div[1]/ul[2]/li[5]/a")).click();
-			//GetObjById("usrName_Link").click();
+			GetObjById("UserName").click();
+			Thread.sleep(2000);
 			GetObjById("usr_Logout_Link").click();
+			
 		}
 		
 	}

@@ -16,7 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.Locatable;
 import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class stockLinks extends testBase{
+public class myProfile extends testBase{
 	
 	@Rule
 	public ErrorCollector eCollector= new ErrorCollector();
@@ -27,7 +27,7 @@ public class stockLinks extends testBase{
 	}
 
 	@Test
-	public void AtestMenuLinks() throws InterruptedException
+	public void A_testMenuLinks() throws InterruptedException
 	{
 		
 		try
