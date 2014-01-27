@@ -36,8 +36,8 @@ public class testBullboard extends testBase{
 		driver.get(CONFIG.getProperty("homePageURL"));
 		//GetObjById("signin_link").click();
 		
-		
-		
+		String temp="";
+		double random;
 		//Login
 		GetObjById("signin_link").click();
 		Thread.sleep(2000);
@@ -71,9 +71,12 @@ public class testBullboard extends testBase{
 		else
 			System.out.println("Validation for bullboard comment is not working");
 		Thread.sleep(11000);
-		GetObjById("bullboard_Post_Subj").sendKeys("Test CommeTest CommeTest CommeTest CommeTest Comme 60 chars!"+"\t"+"test comments");
+		random= (Math.random());
+		temp=random+"test";
+		GetObjById("bullboard_Post_Subj").clear();
+		GetObjById("bullboard_Post_Subj").sendKeys(temp+"\t"+"test comments");
 		
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		GetObjById("bullboard_Post_Btn").click();
 		}
 		
@@ -101,45 +104,46 @@ public class testBullboard extends testBase{
 	
 	
 		//Reply to a post
-		System.out.println("1");
+		
 		Thread.sleep(4000);
-		GetObjByXpath("first_Post_Link").click();
-		System.out.println("2");
+		
+		//GetObjByXpath("first_Post_Link").click();
+		temp= driver.findElement(By.linkText(temp)).getAttribute("href");
+		driver.get(temp);
+		
 		Thread.sleep(4000);
 		//GetObjById("bullboard_Reply_Btn").click();	
 		String ur= driver.findElement(By.id("p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_CompanyBullboard_viewerForum_postElem_lnkReply")).getAttribute("href");
-			System.out.println(ur);
+			//System.out.println(ur);
 			driver.get(ur);
 		//	Thread.sleep(3000);
 		// driver.findElement(By.id("p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_CompanyBullboard_viewerForum_postElem_lnkReply")).click();
 			Thread.sleep(9000);
-		System.out.println("4");
-	
-		/****
+			random= (Math.random());
+			temp="Test Reply"+random;
+		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='Rich text editor, p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_CompanyBullboard_viewerForum_editElem_forumEdit_htmlTemplateBody, press ALT 0 for help.']")));
+        driver.findElement(By.xpath("//html[@class='CSS1Compat']")).sendKeys(temp);
+        driver.switchTo().defaultContent();
+        Thread.sleep(2000);
+        GetObjById("bullboard_Reply_Post_Btn").click();
+        temp="RE:"+temp;
+        if (driver.findElements(By.linkText(temp)).size()!=0)
+        {
+        	System.out.println("Comment posted successfully");
+        }
+        else
+        	System.out.println("Comment NOT posted successfully");
+        /*
 		Actions actionObject = new Actions(driver); 
 		actionObject.sendKeys(Keys.TAB);
 		actionObject.sendKeys(Keys.TAB+"test comments").perform();
 		GetObjById("Reply_Sub").sendKeys("\t"+"\t"+"test comments");
 		 
-		****/
-		Thread.sleep(9000);
-		WebElement iframe2 = driver.findElement(By.tagName("iframe"));
-		driver.switchTo().frame(iframe2);
-		WebElement tinymce2 = driver.findElement(By.tagName("body"));
-		
-		try{
-			tinymce2.click();
-			tinymce2.sendKeys("Test Reply Comments");
-		}catch(Throwable t)
-		{
-			Assert.assertTrue("Again editing problem", false);
-		}
-		
-		driver.switchTo().defaultContent();
+		*/
+
 		
 		
-		GetObjById("bullboard_Reply_Post_Btn").click();
-		
+		/****
 		// Add to favorite
 		GetObjById("bullboard_Link_ComPage").click();
 		GetObjById("Add_Remove_Favourite").click();
@@ -178,7 +182,7 @@ public class testBullboard extends testBase{
 		Thread.sleep(4000);
 		GetObjById("cross_Btn_SignIn_Pop").click();
 		
-		
+		****/
 		
 		
 	}
