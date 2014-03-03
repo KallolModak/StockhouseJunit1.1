@@ -15,6 +15,7 @@ import org.openqa.selenium.interactions.*;
 //import org.openqa.selenium.Mouse;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.Locatable;
+import org.openqa.selenium.internal.seleniumemulation.GetBodyText;
 public class quickLinks extends testBase{
 	
 	@Rule
@@ -75,8 +76,8 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[2]/ul/li[2]/a")).click();
 			textDisplayed= "Blogs under community not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/div[2]/h2")).getText();
-			
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/div[2]/h2")).getText();
+			                                           
 			if (textDisplayed.equals("Blogs"))
 				System.out.println("Blogs link under Community working fine");
 			else
@@ -90,24 +91,26 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[2]/ul/li[3]/a")).click();
 			textDisplayed= "Groups under community not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[2]/div/div[1]/h1")).getText();
-				
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[2]/div/div[1]/h1")).getText();
+			                                           
 			if (textDisplayed.equals("Groups"))
 				System.out.println("Groups link under Community working fine");
 			else
 				System.out.println("Groups under community not working");
 					
-					
+				Thread.sleep(5000);	
 			//Natural resources under News
-			hoverItem = (Locatable) driver.findElement(By.xpath("//*[@id='menuElem']/li[4]/a"));
-	
+			
+			//hoverItem = (Locatable) driver.findElement(By.xpath("//*[@id='menuElem']/li[4]/a"));
+			hoverItem = (Locatable) GetObjByXpath("natural_under_News");                                                
 			 mouse = ((HasInputDevices) driver).getMouse();
 	
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[4]/ul/li[1]/a")).click();
+			                             //*[@id='menuElem']/li[4]/ul/li[1]/a
 			textDisplayed= "Natural resources under News not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/div[2]/h1")).getText();
-			
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/div[2]/h1")).getText();
+			                                           
 			if (textDisplayed.equals("Natural Resources"))
 				System.out.println("Natural Resources link under News working fine");
 			else
@@ -121,7 +124,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[4]/ul/li[2]/a")).click();
 			textDisplayed= "Business under News not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/div[2]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/div[2]/h1")).getText();
 			
 			if (textDisplayed.equals("Business News"))
 				System.out.println("Business News link under News working fine");
@@ -151,7 +154,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[4]/ul/li[4]/a")).click();
 			textDisplayed= "Canadian Press Release News not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[2]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[2]/h1")).getText();
 			
 			if (textDisplayed.equals("Canadian Press Releases"))
 				System.out.println("Canadian Press Release News working fine");
@@ -167,7 +170,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[4]/ul/li[5]/a")).click();
 			textDisplayed= "US Press Release News not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[2]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[2]/h1")).getText();
 			
 			if (textDisplayed.equals("US Press Releases"))
 				System.out.println("US Press Release News working fine");
@@ -217,6 +220,7 @@ public class quickLinks extends testBase{
 			else
 				System.out.println("Interviews under Opinion not working");
 			
+			Thread.sleep(5000);
 			//Movers and shakers under Opinion
 			hoverItem = (Locatable) driver.findElement(By.xpath("//*[@id='menuElem']/li[5]/a"));
 	
@@ -239,7 +243,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[5]/ul/li[5]/a")).click();
 			textDisplayed="Independent Reports under Opinion not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Independent Reports"))
 				System.out.println("Independent Reports under Opinion working fine");
@@ -256,7 +260,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[5]/ul/li[6]/a")).click();
 			textDisplayed="Best of blogs under Opinion not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Best of Boards & Blogs"))
 				System.out.println("Best of blogs under Opinion working fine");
@@ -287,7 +291,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[1]/ul/li[2]/a")).click();
 			textDisplayed="TSXV under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("TSX Venture"))
 				System.out.println("TSXV under Markets working fine");
@@ -317,7 +321,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[1]/ul/li[4]/a")).click();
 			textDisplayed="NYSE under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("NYSE"))
 				System.out.println("NYSE under Markets working fine");
@@ -332,7 +336,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[1]/ul/li[5]/a")).click();
 			textDisplayed="NASDAQ under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("NASDAQ"))
 				System.out.println("NASDAQ under Markets working fine");
@@ -347,7 +351,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[1]/ul/li[6]/a")).click();
 			textDisplayed="AMEX under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("AMEX"))
 				System.out.println("AMEX under Markets working fine");
@@ -362,7 +366,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[1]/ul/li[7]/a")).click();
 			textDisplayed="DJIA under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Dow Jones Industrial Average"))
 				System.out.println("DJIA under Markets working fine");
@@ -378,7 +382,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[2]/a")).click();
 			textDisplayed="Commodities under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Commodities"))
 				System.out.println("Commodities under Markets working fine");
@@ -393,7 +397,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[3]/a")).click();
 			textDisplayed="Market Movers under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Market Movers"))
 				System.out.println("Market Movers under Markets working fine");
@@ -410,7 +414,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[4]/a")).click();
 			textDisplayed="Currencies under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Currencies"))
 				System.out.println("Currencies under Markets working fine");
@@ -425,7 +429,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[5]/a")).click();
 			textDisplayed="Bonds under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Bonds"))
 				System.out.println("Bonds under Markets working fine");
@@ -440,13 +444,13 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[6]/a")).click();
 			textDisplayed="Funds under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Funds Performance Overview"))
 				System.out.println("Funds under Markets working fine");
 			else
 				System.out.println("Funds under Markets not working");
-			
+			Thread.sleep(5000);	
 			//Stock Screener under Markets
 			hoverItem = (Locatable) GetObjByXpath("Market");
 	
@@ -455,13 +459,13 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[3]/ul/li[7]/a")).click();
 			textDisplayed="Stock Screener under Markets not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Stock Screener"))
 				System.out.println("Stock Screener under Markets working fine");
 			else
 				System.out.println("Stock Screener under Markets not working");
-			
+			Thread.sleep(5000);	
 			//Stock Screener under Portfolio
 			hoverItem = (Locatable) GetObjByXpath("Portfolio");
 	
@@ -470,7 +474,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[6]/ul/li[2]/a")).click();
 			textDisplayed="Stock Screener under Portfolio not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Stock Screener"))
 				System.out.println("Stock Screener under Portfolio working fine");
@@ -500,7 +504,7 @@ public class quickLinks extends testBase{
 			mouse.mouseMove(hoverItem.getCoordinates());
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[6]/ul/li[4]/a")).click();
 			textDisplayed="Symbol Lookup under Portfolio not working";
-			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[7]/div[1]/h1")).getText();
+			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/h1")).getText();
 			
 			if (textDisplayed.equals("Showcase Companies"))
 				System.out.println("Showcase Companies under Portfolio working fine");
@@ -512,7 +516,9 @@ public class quickLinks extends testBase{
 		
 		catch(Throwable t)
 		{
-			System.out.println(textDisplayed);
+			eCollector.addError(t);
+			System.out.println(t);
+			System.out.println(textDisplayed+"***");
 		}
 				
 	}

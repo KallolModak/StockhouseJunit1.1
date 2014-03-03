@@ -17,8 +17,12 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.sun.jna.platform.win32.Wdm.KEY_BASIC_INFORMATION;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 public class testBullboard extends testBase{
 	
 	@Rule
@@ -39,12 +43,14 @@ public class testBullboard extends testBase{
 		String temp="";
 		double random;
 		//Login
-		GetObjById("signin_link").click();
-		Thread.sleep(2000);
+		driver.findElement(By.linkText("Sign In")).click();
+		Thread.sleep(5000);
+		driver.switchTo().frame(driver.findElement(By.id("shloginregmodal")));
 		GetObjById("popup_UserName_Input").sendKeys("kallol1");
 		GetObjById("popup_Password_Input").sendKeys("M()dak12");
 		GetObjById("popup_Login_Button").click();
 		Thread.sleep(6000);
+		driver.switchTo().defaultContent();
 		driver.get(CONFIG.getProperty("bullboardURL"));
 		//Post on Bullboard
 		GetObjById("bullboard_Link_ComPage").click();
@@ -125,14 +131,10 @@ public class testBullboard extends testBase{
         driver.findElement(By.xpath("//html[@class='CSS1Compat']")).sendKeys(temp);
         driver.switchTo().defaultContent();
         Thread.sleep(2000);
-        GetObjById("bullboard_Reply_Post_Btn").click();
-        temp="RE:"+temp;
-        if (driver.findElements(By.linkText(temp)).size()!=0)
-        {
-        	System.out.println("Comment posted successfully");
-        }
-        else
-        	System.out.println("Comment NOT posted successfully");
+        driver.findElement(By.name("p$lt$zoneContent$SubContent$p$lt$zoneLeft$Stockhouse_CompanyBullboard$viewerForum$editElem$forumEdit$btnOk")).sendKeys(Keys.RETURN);                                                               
+       // GetObjById("bullboard_Reply_Post_Btn").click();
+       // GetObjById("bullboard_Reply_Post_Btn").click();
+        
         /*
 		Actions actionObject = new Actions(driver); 
 		actionObject.sendKeys(Keys.TAB);

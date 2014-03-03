@@ -37,21 +37,23 @@ public class myProfile extends testBase{
 			if(driver.findElements(By.id("p_lt_zoneMembership_mb_lblUserName")).size()==0)
 			{
 				
-				GetObjById("signin_link").click();
-				Thread.sleep(2000);
+				 driver.findElement(By.linkText("Sign In")).click();
+				 Thread.sleep(5000);
+				 driver.switchTo().frame(driver.findElement(By.id("shloginregmodal")));
 				GetObjById("popup_UserName_Input").sendKeys("kallol1");
 				GetObjById("popup_Password_Input").sendKeys("M()dak12");
 				GetObjById("popup_Login_Button").click();
 				Thread.sleep(6000);
+				 driver.switchTo().defaultContent();
 			}
 			
 			
 			//Go to My Profile Page
 			Thread.sleep(6000);
-			String userName= GetObjById("UserName").getText();
+			String userName= GetObjByXpath("UserName").getText();
 			System.out.println(userName);
 			
-			GetObjById("UserName").click();
+			GetObjByXpath("UserName").click();
 			Thread.sleep(2000);
 			GetObjById("MyProfile").click();
 			

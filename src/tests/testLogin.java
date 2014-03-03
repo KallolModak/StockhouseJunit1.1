@@ -7,7 +7,9 @@ import java.util.Collection;
 
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ErrorCollector;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -25,6 +27,8 @@ public class testLogin extends testBase {
 		this.name=name;
 		this.password=password;
 	}
+	@Rule
+	public ErrorCollector eCollector= new ErrorCollector();
 	
 	@Before
 	public void beforeTest() throws IOException{
@@ -41,28 +45,32 @@ public class testLogin extends testBase {
 		//GetObjById("p_lt_zoneMembership_mb_lnkSignIn").click();
 		
 		//Login
-		GetObjById("signin_link").click();
-		Thread.sleep(2000);
+		 driver.findElement(By.linkText("Sign In")).click();
+		Thread.sleep(5000);
+		  driver.switchTo().frame(driver.findElement(By.id("shloginregmodal")));
 		if (name=="ewrrw")
 		{
 			GetObjById("popup_Login_Button").click();
 			try
 			{
 				textDisplayed="Please enter your E-mail or username";
-				driver.findElement(By.id("p_lt_zoneMembership_mb_Login1_rfvUserNameRequired")).getText();
+				driver.findElement(By.id("Login1_rfvUserNameRequired")).getText();
 				GetObjById("popup_UserName_Input").sendKeys(name);
 				GetObjById("popup_Login_Button").click();
 				textDisplayed="Sorry that username does not exist.";
-				driver.findElement(By.id("p_lt_zoneMembership_mb_Login1_FailureText")).getText();	
+				driver.findElement(By.id("Login1_FailureText")).getText();	
 				GetObjById("popup_UserName_Input").clear();
 				GetObjById("popup_UserName_Input").sendKeys("kallol1");
-				GetObjById("popup_Login_Button").click();
+				GetObjById("popup_Login_Button").click();  
 				textDisplayed="Your login attempt was not successful. Please try again.";
-				driver.findElement(By.id("p_lt_zoneMembership_mb_Login1_FailureText")).getText();
+				//driver.findElement(By.id("Login1_FailureText")).getText();
+				driver.switchTo().defaultContent();
 				System.out.println("Validation Complete on login page");
 			}
 			catch(Throwable t)
 			{
+				eCollector.addError(t);
+				System.out.println(t);
 				System.out.println("Validation missing"+textDisplayed);
 			}
 		}
@@ -72,6 +80,8 @@ public class testLogin extends testBase {
 			GetObjById("popup_Password_Input").sendKeys(password);
 			GetObjById("popup_Login_Button").click();
 			Thread.sleep(3000);
+			  driver.switchTo().defaultContent();
+			 // String strActualUser=driver.findElement(By.xpath("//li/a[@class='dropdown-trigger']/span")).getText();
 			driver.get("http://www.stockhouse.com/companies/bullboard/t.bb/blackberry");
 			
 			// Check for admin
@@ -96,7 +106,8 @@ public class testLogin extends testBase {
 			
 			
 			//Logout
-			GetObjById("UserName").click();
+			
+			GetObjByXpath("UserName").click();
 			Thread.sleep(2000);
 			GetObjById("usr_Logout_Link").click();
 			
