@@ -122,7 +122,70 @@ public static WebElement GetObjById(String OR_Key){
 	 return driver.findElement(By.id(OR.getProperty(OR_Key)));
 	 */
 }
+public static void switchToNewWindow()
+{
+	
+		System.out.println("Switching to the new window");
+		String oldWindow = driver.getWindowHandle();
 
+		if(driver.getWindowHandles().size() < 2)
+		{
+			System.out.println("No new window appeared, windows count available :-" + driver.getWindowHandles().size());
+		}
+
+		for(String winHandle : driver.getWindowHandles()){
+			if(winHandle!=oldWindow)
+			{
+				driver.switchTo().window(winHandle);
+			}
+		}
+
+}
+public static WebElement GetObjByLinkText(String OR_Key){
+	/*
+	try{
+		return driver.findElement(By.id(OR.getProperty(OR_Key)));
+	}
+	catch(Throwable t)
+	{
+		System.out.println(OR_Key);
+		return null;
+	}
+	*/
+	
+	try{
+	 	 WebDriverWait wait = new WebDriverWait(driver, 100);	 
+	 	 ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() { public Boolean apply(WebDriver driver) { return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");}};
+	 	 wait.until(pageLoadCondition);
+	 	return wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(OR.getProperty(OR_Key))));
+	 }
+	 catch(Throwable t)
+	 {
+//		t.printStackTrace(); 
+	 	System.out.println("-----**This element was NOT found------ "+OR_Key);
+	 	System.out.println(t.getCause());
+	 	System.out.println(t.getMessage());
+	 	
+	 	return null;
+	 }
+	
+	/*
+	 for (int i = 0; i < 10; i++) {
+         if (driver.findElements(By.id(OR.getProperty(OR_Key))).size() > 0 ) {
+        	
+             break;
+         } else {
+             try {
+                 Thread.sleep(1000);
+             } catch (Exception e) {
+                 System.out.println(e);
+                 System.out.println("----**This element was NOT found -----"+OR_Key);
+             }
+         }
+	 }
+	 return driver.findElement(By.id(OR.getProperty(OR_Key)));
+	 */
+}
 public static WebElement GetObjByXpath(String OR_Key){
 	/*
 	 for (int i = 0; i < 10; i++) {
