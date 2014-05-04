@@ -55,10 +55,12 @@ public class testLogin extends testBase {
 			{
 				textDisplayed="Please enter your E-mail or username";
 				driver.findElement(By.id("Login1_rfvUserNameRequired")).getText();
+				Thread.sleep(5000);
 				GetObjById("popup_UserName_Input").sendKeys(name);
 				GetObjById("popup_Login_Button").click();
 				textDisplayed="Sorry that username does not exist.";
 				driver.findElement(By.id("Login1_FailureText")).getText();	
+				Thread.sleep(5000);
 				GetObjById("popup_UserName_Input").clear();
 				GetObjById("popup_UserName_Input").sendKeys("kallol1");
 				GetObjById("popup_Login_Button").click();  
@@ -76,13 +78,16 @@ public class testLogin extends testBase {
 		}
 		else
 		{
+			Thread.sleep(5000);
 			GetObjById("popup_UserName_Input").sendKeys(name);
 			GetObjById("popup_Password_Input").sendKeys(password);
 			GetObjById("popup_Login_Button").click();
 			Thread.sleep(3000);
 			  driver.switchTo().defaultContent();
 			 // String strActualUser=driver.findElement(By.xpath("//li/a[@class='dropdown-trigger']/span")).getText();
-			driver.get("http://www.stockhouse.com/companies/bullboard/t.bb/blackberry");
+			//driver.get("http://www.stockhouse.com/companies/bullboard/t.bb/blackberry");
+			driver.get(CONFIG.getProperty("bullboardURL"));
+			
 			
 			// Check for admin
 			try
@@ -107,7 +112,7 @@ public class testLogin extends testBase {
 			
 			//Logout
 			
-			GetObjByXpath("UserName").click();
+			GetObjById("UserName").click();
 			Thread.sleep(2000);
 			GetObjById("usr_Logout_Link").click();
 			
