@@ -2,7 +2,7 @@
 <!DOCTYPE project [
 ]>
 
-<project name="Module_8_Junit_Ant" default="usage" basedir=".">  
+<project name="StockHouse_JUnit" default="usage" basedir=".">  
 
 <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
