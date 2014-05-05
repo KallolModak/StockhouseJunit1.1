@@ -2,7 +2,7 @@
 <!DOCTYPE project [
 ]>
 
-<project name="StockHouse_JUnit" default="usage" basedir=".">  
+<project name="StockHouse_JUnit" basedir=".">  
 
 <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
@@ -52,13 +52,10 @@
         
     </target>
   
-    <!-- all -->
-    <target name="all">
-    </target>
-
     <!-- clean -->
     <target name="clean">
         <delete dir="${test.dest}"/>
+    	<mkdir dir="${test.dest}"/>
     </target>
 
     <!-- compile -->
@@ -67,16 +64,16 @@
             <fileset dir="${test.dest}" includes="**/*"/>
 		</delete>
         <echo message="making directory..."/>
-		<mkdir dir="${test.dest}"/>
+		
         <echo message="classpath------: ${test.classpath}"/>
         <echo message="compiling..."/>
         <javac 
             debug="true" 
             destdir="${test.dest}" 
             srcdir="${test.src}" 
-            target="1.5" 
+            target="1.8" 
             classpath="${test.classpath}"
-        >
+    	>
         </javac>
       </target>
 
@@ -87,11 +84,11 @@
    
 	  
 
-    <target name="usage">
+    <!--target name="usage">
         <echo>
             ant run will execute the test
         </echo>
-    </target>
+    </target-->
 
 	<path id="test.c">
 	        <fileset dir="${ws.jars}" includes="*.jar"/>
@@ -99,12 +96,12 @@
 	
 	  
 	
-	<target name="run" >  
+	<target name="run" depends="compile">  
 		<delete includeemptydirs="true" quiet="true">
 		            <fileset dir="${test.reportsDir}" includes="**/*"/>
 				</delete>
 			    <java jar="${ws.jars}" fork="true" spawn="true" />  
-			    <junit fork="yes" haltonfailure="no" printsummary="yes">
+			    <junit fork="yes" haltonfailure="yes" printsummary="yes">
 				    <classpath refid="testcase.path" />  
 
 			      <!--  <classpath ="${test.classpath}"/> -->  

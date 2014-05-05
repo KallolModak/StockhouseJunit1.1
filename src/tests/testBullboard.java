@@ -3,8 +3,8 @@ package tests;
 
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -268,9 +268,6 @@ public class testBullboard extends testBase{
 			}
 			System.out.println("Voluume verification : "+fla);
 			driver.findElement(By.linkText("T.BB")).click();
-//			while(!GetObjByLinkText("prrimary_symbol").isDisplayed()){
-				Thread.sleep(5000);
-//			}
 				WebElement els=GetObjById("new_Post");
 				if(els==null){
 					System.out.println("only alternate sysmbols are displayed");
@@ -279,42 +276,58 @@ public class testBullboard extends testBase{
 				Select srt=new Select(GetObjById("sortingtype"));
 				srt.selectByVisibleText("Flat - newest to oldest");
 				Thread.sleep(6000);
-				SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+				SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd, yyyy hh:mm a");
 				List<WebElement> lst=driver.findElements(By.xpath("//div[@class='post-info-user']/span"));
+				List<Date> dates= new ArrayList<>();
 				
 				for(int i=0;i<lst.size();i++){
 					String strdate=lst.get(i).getText();
 					strdate=strdate.split("posted")[1].split("by")[0].trim();
 					System.out.println(strdate);
-					DateFormat f = new SimpleDateFormat("MMMM dd, yyyy hh:mm a");
-					//Date date = SimpleDateFormat.parse(date.toString("dd/MM/yy"));
-			        Date d = f.parse(strdate);
-			       // d.compareTo(anotherDate)
-			        System.out.println(d);
-			        DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-//					Date date = formatter.parse(strdate);
-//					System.out.println(date);
-//					System.out.println(formatter.format(date));
+					Date date = formatter.parse(strdate);
+					dates.add(date);
 				}
+				boolean flag=true;
+				for(int i=0;i<dates.size();i++){
+					
+					System.out.println(dates.get(i));
+					if(dates.get(i).compareTo(dates.get(i+1))<0){
+						flag=false;
+					}
+				}
+				System.out.println("Flat - newest to oldest : "+flag);
 				srt.selectByVisibleText("Flat - oldest to newest");
 				Thread.sleep(6000);
 				List<WebElement> ls=driver.findElements(By.xpath("//div[@class='post-info-user']/span"));
+				List<Date> dts=new ArrayList<Date>();
 				for(int i=0;i<ls.size();i++){
-					System.out.println(ls.get(i).getText());
+					String strdate=ls.get(i).getText();
+					strdate=strdate.split("posted")[1].split("by")[0].trim();
+					System.out.println(strdate);
+					Date date = formatter.parse(strdate);
+					dts.add(date);
 				}
-			
-		}
+				boolean flag1=true;
+				for(int i=0;i<dates.size();i++){
+					System.out.println(dates.get(i));
+					if(dates.get(i).compareTo(dates.get(i+1))>0){
+						flag1=false;
+					}
+				}
+				System.out.println("Flat - oldest to newest: "+flag1);
+			}
 
 		catch (Throwable t) {
 			eCollector.addError(t);
 		}
 		
 		}
+
 	@After
 	public void teardwn(){
 		driver.quit();
 		
-		/*WebElement iframe = driver.findElement(By.tagName("iframe"));
+		/*WebElement iframe = dr iver.findElement(By.tagName("iframe"));
 		driver.switchTo().frame(iframe);
 		
 		WebElement tinymce = driver.findElement(By.tagName("body"));
