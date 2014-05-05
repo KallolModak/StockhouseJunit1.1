@@ -45,6 +45,7 @@ public class testLogin extends testBase {
 		//GetObjById("p_lt_zoneMembership_mb_lnkSignIn").click();
 		
 		//Login
+		Thread.sleep(4000);
 		 driver.findElement(By.linkText("Sign In")).click();
 		Thread.sleep(5000);
 		  driver.switchTo().frame(driver.findElement(By.id("shloginregmodal")));
@@ -57,6 +58,7 @@ public class testLogin extends testBase {
 				driver.findElement(By.id("Login1_rfvUserNameRequired")).getText();
 				Thread.sleep(5000);
 				GetObjById("popup_UserName_Input").sendKeys(name);
+				Thread.sleep(2000);
 				GetObjById("popup_Login_Button").click();
 				textDisplayed="Sorry that username does not exist.";
 				driver.findElement(By.id("Login1_FailureText")).getText();	
@@ -81,6 +83,7 @@ public class testLogin extends testBase {
 			Thread.sleep(5000);
 			GetObjById("popup_UserName_Input").sendKeys(name);
 			GetObjById("popup_Password_Input").sendKeys(password);
+			Thread.sleep(4000);
 			GetObjById("popup_Login_Button").click();
 			Thread.sleep(3000);
 			  driver.switchTo().defaultContent();
@@ -111,9 +114,9 @@ public class testLogin extends testBase {
 			
 			
 			//Logout
-			
+			Thread.sleep(5000);
 			GetObjById("UserName").click();
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			GetObjById("usr_Logout_Link").click();
 			
 		}

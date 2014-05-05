@@ -50,10 +50,10 @@ public class myProfile extends testBase{
 			
 			//Go to My Profile Page
 			Thread.sleep(6000);
-			String userName= GetObjByXpath("UserName").getText();
+			String userName= GetObjById("UserName").getText();
 			System.out.println(userName);
 			
-			GetObjByXpath("UserName").click();
+			GetObjById("UserName").click();
 			Thread.sleep(2000);
 			GetObjById("MyProfile").click();
 			

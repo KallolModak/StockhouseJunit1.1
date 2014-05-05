@@ -8,10 +8,11 @@
     <property environment="env"/>
     
     <property name="ws.home" value="${basedir}"/>
-	<property name="ws.jars" value="C:\jars_webdriver_testng_datadriven"/>
+	<property name="ws.jars" value="C:\SeleniumAntD"/>
     <property name="test.dest" value="${ws.home}/build"/>
     <property name="test.src" value="${ws.home}/src"/>
 	<property name="test.reportsDir" value="C:/rep"/>
+	
 
 	
 
@@ -101,7 +102,7 @@
 		            <fileset dir="${test.reportsDir}" includes="**/*"/>
 				</delete>
 			    <java jar="${ws.jars}" fork="true" spawn="true" />  
-			    <junit fork="yes" haltonfailure="yes" printsummary="yes">
+			    <junit fork="yes" haltonfailure="no" printsummary="yes">
 				    <classpath refid="testcase.path" />  
 
 			      <!--  <classpath ="${test.classpath}"/> -->  

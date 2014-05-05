@@ -17,7 +17,7 @@ import org.openqa.selenium.interactions.*;
 //import org.openqa.selenium.Mouse;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.Locatable;
-import org.openqa.selenium.internal.seleniumemulation.GetBodyText;
+//import org.openqa.selenium.internal.seleniumemulation.GetBodyText;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class quickLinks extends testBase{
 	String textDisplayed="99";
