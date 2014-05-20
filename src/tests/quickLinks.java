@@ -186,7 +186,7 @@ public class quickLinks extends testBase{
 	public void B_testNewsLinks() throws InterruptedException
 	{
 		driver.get(CONFIG.getProperty("homePageURL"));
-		
+		Thread.sleep(4000);
 		Locatable hoverItem = (Locatable) driver.findElement(By.xpath("//*[@id='menuElem']/li[2]/a"));
 
 		Mouse mouse = ((HasInputDevices) driver).getMouse();
