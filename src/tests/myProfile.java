@@ -41,6 +41,7 @@ public class myProfile extends testBase{
 				 Thread.sleep(5000);
 				 driver.switchTo().frame(driver.findElement(By.id("shloginregmodal")));
 				GetObjById("popup_UserName_Input").sendKeys("kallol1");
+				
 				GetObjById("popup_Password_Input").sendKeys("M()dak12");
 				GetObjById("popup_Login_Button").click();
 				Thread.sleep(6000);

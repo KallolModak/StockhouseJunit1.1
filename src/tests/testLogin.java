@@ -132,6 +132,7 @@ public class testLogin extends testBase {
 		
 		//2nd Row
 		data[1][0]="usrQA1";
+		
 		data[1][1]="BSGnpy961a";
 		
 		//3rd Row
