@@ -72,12 +72,15 @@ public class quickLinks extends testBase{
 			
 			
 			//Blogs under community
+			Thread.sleep(5000);	
 			hoverItem = (Locatable) driver.findElement(By.xpath("//*[@id='menuElem']/li[2]/a"));
 	
 			mouse = ((HasInputDevices) driver).getMouse();
 	
 			mouse.mouseMove(hoverItem.getCoordinates());
+			Thread.sleep(5000);	
 			driver.findElement(By.xpath("//*[@id='menuElem']/li[2]/ul/li[2]/a")).click();
+			                             
 			textDisplayed= "Blogs under community not working";
 			textDisplayed=driver.findElement(By.xpath("//*[@id='form']/div[8]/div[1]/div[2]/h2")).getText();
 			                                           
